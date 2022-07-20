@@ -41,6 +41,23 @@ class _FileImageState extends State<FileImage> {
     print(status);
     setState(() => _permissionStatus = status);
   }
+  // PermissionStatus _permissionStatus = PermissionStatus.denied;
+
+  // @override
+  // void initState() {
+  //   super.initState();
+
+  //   () async {
+  //     _permissionStatus = await Permission.storage.status;
+
+  //     if (_permissionStatus != PermissionStatus.granted) {
+  //       PermissionStatus permissionStatus = await Permission.storage.request();
+  //       setState(() {
+  //         _permissionStatus = permissionStatus;
+  //       });
+  //     }
+  //   }();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -55,8 +72,8 @@ class _FileImageState extends State<FileImage> {
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Image.file(
-                File('/storage/emulated/0/Pictures/myfile\ (4).jpg')),
+            child:
+                Image.file(File('/storage/emulated/0/Pictures/R0010973.JPG')),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -71,7 +88,9 @@ class _FileImageState extends State<FileImage> {
         ],
       ));
     }
-    return Container();
+    return Container(
+      child: Text('Permission not Granted'),
+    );
   }
 
   Future<void> requestPermission(Permission permission) async {
