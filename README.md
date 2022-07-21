@@ -4,7 +4,7 @@
 
 This project finds an image file from the device's local storage and displays it on the screen. The main concept is using the `Image.file` in conjunction with the Flutter plugin [permission_handler](https://pub.dev/packages/permission_handler).
 
-![diagram](docs/diagram.png)
+![diagram](docs/diagram2.png)
 
 The project follows the tutorial by Ivan Andrianto linked [here](https://www.woolha.com/tutorials/flutter-display-image-from-file-examples#:~:text=In%20Flutter%2C%20displaying%20an%20image,you%20can%20also%20use%20FileImage%20)
 
