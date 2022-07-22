@@ -89,7 +89,11 @@ class _FileImageState extends State<FileImage> {
       ));
     }
     return Container(
-      child: Text('Permission not Granted'),
+      child: TextButton(
+          child: Text('Grant Permission'),
+          onPressed: () {
+            requestPermission(Permission.storage);
+          }),
     );
   }
 

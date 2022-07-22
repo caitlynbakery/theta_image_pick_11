@@ -10,6 +10,8 @@ The project follows the tutorial by Ivan Andrianto linked [here](https://www.woo
 
 ## Storage Permissions 
 
+![permissions](docs/permissions.gif)
+
  Accessing a file from local storage requires permissions. To manage this, import the `permission_handler` plugin into the project. The package requires three steps before use in Android. 
  
  1. Add these two lines to the `gradle.properties` file:
@@ -52,9 +54,34 @@ This project models the code example from `permission_handler` for the permissio
     print(status);
     setState(() => _permissionStatus = status);
   }
+
+   @override
+  Widget build(BuildContext context) {
+    ...
+  }
+
+  Future<void> requestPermission(Permission permission) async {
+  final status = await permission.request();
+
+  setState(() {
+    print(status);
+    _permissionStatus = status;
+    print(_permissionStatus);
+  });
+}
 ```
 
-The state of `_permissionStatus` is set to the storage status. The `Permission` status will be `granted`, `denied`, `restricted`, or `permanentlyDenied`. If the `_permissionStatus` is equal to `PermissionStatus.granted`, then the Column is displayed.
+The state of `_permissionStatus` is set to the storage status. The `Permission` status will be `granted`, `denied`, `restricted`, or `permanentlyDenied`. Build a `TextButton` that calls the `requestPermission` method for `Permission.storage`. This call runs once to grant the app permissions.
+
+```dart
+TextButton(
+          child: Text('Grant Permission'),
+          onPressed: () {
+            requestPermission(Permission.storage);
+          }),
+```
+
+If the `_permissionStatus` is equal to `PermissionStatus.granted`, then the Column is displayed.
 
 ```dart
  if (_permissionStatus == PermissionStatus.granted) {
@@ -70,6 +97,10 @@ The state of `_permissionStatus` is set to the storage status. The `Permission` 
 The `Image.file` takes in the location of the image in local storage. Using `adb shell` in the terminal will navigate to the emulator. From there, find the location of the images. 
 
 ![location](docs/location.png)
+
+```dart
+Image.file(File('/storage/emulated/0/Pictures/R0010948.JPG'))
+```
 
 Now, the app should display the image:
 
