@@ -6,7 +6,7 @@ This project finds an image file from the device's local storage and displays it
 
 ![diagram](docs/diagram2.png)
 
-The project follows the tutorial by Ivan Andrianto linked [here](https://www.woolha.com/tutorials/flutter-display-image-from-file-examples#:~:text=In%20Flutter%2C%20displaying%20an%20image,you%20can%20also%20use%20FileImage%20)
+This project follows the tutorial by Ivan Andrianto linked [here](https://www.woolha.com/tutorials/flutter-display-image-from-file-examples#:~:text=In%20Flutter%2C%20displaying%20an%20image,you%20can%20also%20use%20FileImage%20)
 
 ## Storage Permissions 
 
@@ -70,7 +70,7 @@ This project models the code example from `permission_handler` for the permissio
   });
 }
 ```
-
+ 
 The state of `_permissionStatus` is set to the storage status. The `Permission` status will be `granted`, `denied`, `restricted`, or `permanentlyDenied`. Build a `TextButton` that calls the `requestPermission` method for `Permission.storage`. This call runs once to grant the app permissions.
 
 ```dart
@@ -110,3 +110,9 @@ Experiment and add multiple images:
 
 ![files](docs/files.png)
 
+---
+
+## Problems
+
+M1 Mac compatibility issue
+https://stackoverflow.com/questions/64901180/how-to-run-cocoapods-on-apple-silicon-m1/64901980#64901980
