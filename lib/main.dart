@@ -92,7 +92,7 @@ class _FileImageState extends State<FileImage> {
       child: TextButton(
           child: Text('Grant Permission'),
           onPressed: () {
-            requestPermission(Permission.storage);
+            requestPermission(Permission.photos);
           }),
     );
   }
