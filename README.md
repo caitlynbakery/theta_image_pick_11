@@ -112,7 +112,8 @@ Experiment and add multiple images:
 
 ---
 
-## Problems
+## IOS Compatibility 
 
-M1 Mac compatibility issue
-https://stackoverflow.com/questions/64901180/how-to-run-cocoapods-on-apple-silicon-m1/64901980#64901980
+This example is from the tutorial by [Johannes Milke](https://youtu.be/MSv38jO4EJk). 
+
+To pick an image using IOS from the gallery, use the plugin `image_picker` for Flutter. The plugin allows user to select images from the gallery and displays it on the screen. 

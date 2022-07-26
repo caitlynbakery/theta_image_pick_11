@@ -36,6 +36,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   path_provider: ^2.0.11
   permission_handler: ^10.0.0
+  image_picker: ^0.8.5+3
+  panorama: ^0.4.1
 
 dev_dependencies:
   flutter_test:
