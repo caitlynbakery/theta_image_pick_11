@@ -125,14 +125,25 @@ class ImageWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-        onTap: () {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => PanoramaWidget(myFile: myFile)));
-          print("changed to new screen");
-        },
-        child: Image.file(myFile));
+    return Column(
+      children: [
+        InkWell(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => PanoramaWidget(myFile: myFile)));
+              print("changed to new screen");
+            },
+            child: Image.file(myFile)),
+        SizedBox(
+          height: 20,
+        ),
+        Text(
+          "Tap for 360 View",
+          style: TextStyle(fontSize: 20, color: Colors.black54),
+        )
+      ],
+    );
   }
 }

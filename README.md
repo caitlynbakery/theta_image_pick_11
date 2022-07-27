@@ -23,8 +23,6 @@ requestPermission(
 
 ## Storage Permissions 
 
-![permissions](docs/permissions.gif)
-
  Accessing a file from local storage requires permissions. To manage this, import the `permission_handler` plugin into the project. The package requires three steps before use in Android. 
  
  1. Add these two lines to the `gradle.properties` file:
@@ -66,7 +64,7 @@ There are two steps for use in IOS.
     <string>photos</string>
 ```
 
-This project models the code example from `permission_handler` for the permission settings. Inside a class called `ImageFile` add the below code:
+This project models the code example from `permission_handler`. Inside a class called `ImageFile` add the below code:
 
 ```dart
  PermissionStatus _permissionStatus = PermissionStatus.denied;
@@ -105,7 +103,7 @@ This project models the code example from `permission_handler` for the permissio
   });
 }
 ```
- 
+
 The state of `_permissionStatus` is set to either storage or photos status. The `Permission` status will be `granted`, `denied`, `restricted`, or `permanentlyDenied`. Build a `TextButton` that calls the `requestPermission` method for `Permission.storage`. This call runs once to grant the app permissions.
 
 ```dart
@@ -115,6 +113,8 @@ TextButton(
               Platform.isIOS ? Permission.photos : Permission.storage),
         ),
 ```
+
+<img src="docs/permissions.png" width=40%>
 
 If the `_permissionStatus` is equal to `PermissionStatus.granted`, then the Scaffold is displayed.
 
@@ -129,7 +129,7 @@ If the `_permissionStatus` is equal to `PermissionStatus.granted`, then the Scaf
 
 ## File Picker
 
-The [image_picker](https://pub.dev/packages/image_picker) plugin simplifies the process for selecting images. First, import the package. Create a method called `pickImage` that is called when a TextButton is pressed. The method updates the State with a new image when one is selected.  
+The [image_picker](https://pub.dev/packages/image_picker) plugin simplifies the process for selecting images. First, import the package. Create a method called `pickImage` that is called when a TextButton is pressed. The method updates the State when a new image is selected.  
 
 ```dart
   File? image;
@@ -148,6 +148,37 @@ The [image_picker](https://pub.dev/packages/image_picker) plugin simplifies the 
   }
 ```
 
+If the user selects an image, then the screen displays it. Else, there is a Container. 
+
+```dart
+image != null ? ImageWidget(myFile: image!) : Container()
+```
+
+![screen](docs/screenrecord.gif)
+
+## Panorama
+
+Import the [panorama](https://pub.dev/packages/panorama) package into the project for 360 view. When the user clicks on the image, the `Navigator.push` displays the 360 view screen.
+
+```dart
+class PanoramaWidget extends StatelessWidget {
+  File myFile;
+  PanoramaWidget({Key? key, required this.myFile}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(),
+      body: Center(
+          child: Panorama(
+        child: Image.file(myFile),
+      )),
+    );
+  }
+}
+```
+
+![panorama](docs/panorama.gif)
 ---
 
 ## Additional Information
